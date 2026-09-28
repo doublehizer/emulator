@@ -84,17 +84,27 @@ class EmulatorWindow:
         """Выполнить строку и показать команду и её результат.
 
         :param line: строка, которую ввёл пользователь.
+        :return: True, если команда выполнена без ошибок.
         """
         self.write(f"{PROMPT} {line}", "command")
         try:
             result = self.shell.execute(line)
         except EmulatorError as error:
             self.write(f"Ошибка: {error}", "error")
-            return
+            return False
         if result:
             self.write(result)
         if not self.shell.running:
             self.root.destroy()
+        return True
+
+    def schedule(self, callback, *args):
+        """Выполнить функцию сразу после того, как окно откроется.
+
+        :param callback: функция, которую нужно вызвать.
+        :param args: аргументы для этой функции.
+        """
+        self.root.after(0, callback, *args)
 
     def run(self):
         """Показать окно и ждать действий пользователя."""

@@ -11,3 +11,7 @@ class ParseError(EmulatorError):
 
 class CommandError(EmulatorError):
     """Неизвестная команда или неверные аргументы."""
+
+
+class ScriptError(EmulatorError):
+    """Стартовый скрипт нельзя прочитать."""

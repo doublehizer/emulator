@@ -1,10 +1,9 @@
 """Ядро эмулятора: выполнение введённых строк."""
 
 from emulator.commands import COMMANDS
+from emulator.config import DEFAULT_VFS_NAME
 from emulator.errors import CommandError
 from emulator.parser import parse_line
-
-DEFAULT_VFS_NAME = "default"
 
 
 class Shell:

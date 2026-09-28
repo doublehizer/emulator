@@ -1,0 +1,5 @@
+ls /home
+cd "My Documents"
+foo
+ls -a
+cd /
