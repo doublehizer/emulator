@@ -1,0 +1,12 @@
+# Служебные файлы Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Настройки редакторов
+.idea/
+.vscode/
+
+# Системные файлы macOS
+.DS_Store
