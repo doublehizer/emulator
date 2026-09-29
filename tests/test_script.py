@@ -35,38 +35,38 @@ class FakeWindow:
 
 
 class RunScriptTest(unittest.TestCase):
-    """Проверки выполнения строк скрипта."""
+    """Проверки выполнения строк скрипта.
 
-    def setUp(self):
-        """Создать новое окно-подмену перед каждым тестом."""
-        self.window = FakeWindow()
+    Каждый тест создаёт своё новое окно-подмену, поэтому тесты
+    не влияют друг на друга.
+    """
 
     def test_all_lines_run(self):
         """Скрипт без ошибок выполняется целиком."""
-        self.assertTrue(run_script(self.window, ["ls", "cd dir"]))
-        self.assertIn("$ ls", self.window.lines)
-        self.assertIn("cd ['dir']", self.window.lines)
+        window = FakeWindow()
+        self.assertTrue(run_script(window, ["ls", "cd dir"]))
+        self.assertIn("$ ls", window.lines)
+        self.assertIn("cd ['dir']", window.lines)
 
     def test_stops_on_first_error(self):
         """После ошибки следующие строки не выполняются."""
-        success = run_script(self.window, ["ls", "foo", "cd after"])
+        window = FakeWindow()
+        success = run_script(window, ["ls", "foo", "cd after"])
         self.assertFalse(success)
-        self.assertIn(
-            "Скрипт остановлен: ошибка в строке 2.", self.window.lines
-        )
-        self.assertNotIn("$ cd after", self.window.lines)
+        self.assertIn("Скрипт остановлен: ошибка в строке 2.", window.lines)
+        self.assertNotIn("$ cd after", window.lines)
 
     def test_empty_lines_skipped(self):
         """Пустые строки пропускаются, но учитываются в нумерации."""
-        run_script(self.window, ["", "   ", "foo"])
-        self.assertIn(
-            "Скрипт остановлен: ошибка в строке 3.", self.window.lines
-        )
+        window = FakeWindow()
+        run_script(window, ["", "   ", "foo"])
+        self.assertIn("Скрипт остановлен: ошибка в строке 3.", window.lines)
 
     def test_stops_after_exit(self):
         """После exit остальные строки не выполняются."""
-        self.assertTrue(run_script(self.window, ["exit", "ls"]))
-        self.assertNotIn("$ ls", self.window.lines)
+        window = FakeWindow()
+        self.assertTrue(run_script(window, ["exit", "ls"]))
+        self.assertNotIn("$ ls", window.lines)
 
 
 class ReadScriptTest(unittest.TestCase):
