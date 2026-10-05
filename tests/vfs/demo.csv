@@ -1,1 +1,12 @@
 path,type,content
+/home,dir,
+/home/user,dir,
+/home/user/docs,dir,
+/home/user/docs/readme.txt,file,0J/RgNC40LLQtdGCINC40LcgVkZTIQo=
+/home/user/docs/todo.txt,file,0JrRg9C/0LjRgtGMINC80L7Qu9C+0LrQvgrQodC00LDRgtGMINC/0YDQsNC60YLQuNC60YMK
+/home/user/photo.bin,file,ABEiM0RVZneImaq7zN3u/w==
+/home/user/My Documents,dir,
+/home/user/My Documents/notes.txt,file,0JfQsNC80LXRgtC60LgK
+/etc,dir,
+/etc/hostname,file,ZW11bGF0b3IK
+/tmp,dir,

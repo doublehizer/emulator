@@ -1,20 +1,20 @@
 """Ядро эмулятора: выполнение введённых строк."""
 
 from emulator.commands import COMMANDS
-from emulator.config import DEFAULT_VFS_NAME
 from emulator.errors import CommandError
 from emulator.parser import parse_line
+from emulator.vfs import Vfs
 
 
 class Shell:
     """Состояние эмулятора и выполнение команд."""
 
-    def __init__(self, vfs_name=DEFAULT_VFS_NAME):
+    def __init__(self, vfs=None):
         """Создать эмулятор.
 
-        :param vfs_name: имя VFS, показывается в заголовке окна.
+        :param vfs: загруженная VFS; None — пустая VFS по умолчанию.
         """
-        self.vfs_name = vfs_name
+        self.vfs = vfs if vfs is not None else Vfs()
         self.running = True
 
     def execute(self, line):

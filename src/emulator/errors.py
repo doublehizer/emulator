@@ -15,3 +15,7 @@ class CommandError(EmulatorError):
 
 class ScriptError(EmulatorError):
     """Стартовый скрипт нельзя прочитать."""
+
+
+class VfsError(EmulatorError):
+    """VFS нельзя загрузить: файл не найден или неверный формат."""

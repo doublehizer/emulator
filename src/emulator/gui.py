@@ -25,12 +25,12 @@ class EmulatorWindow:
         """
         self.shell = shell
         self.root = tk.Tk()
-        self.root.title(f"{WINDOW_TITLE} — {shell.vfs_name}")
+        self.root.title(f"{WINDOW_TITLE} — {shell.vfs.name}")
         self.root.geometry(WINDOW_SIZE)
         self.entry = self._create_input()
         self.output = self._create_output()
         self.write(
-            f"Эмулятор запущен. VFS: {shell.vfs_name}. "
+            f"Эмулятор запущен. VFS: {shell.vfs.name}. "
             "Для выхода введите exit."
         )
 

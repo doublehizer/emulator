@@ -1,0 +1,9 @@
+vfs-info
+ls
+ls -l /home
+cd /home/user
+cd "My Documents"
+ls 'a b' c
+
+cd ..
+vfs-info extra
